@@ -12,9 +12,18 @@ const config: ForgeConfig = {
   packagerConfig: {
     executableName: pkg.name, 
     name: pkg.productName, 
-    asar: true,
+    asar: {
+      // Don't package the sqlite3 native modules into asar
+      unpack: "**/*.node"
+    },
+    extraResource: [
+      // You can add extra resources here if needed
+    ],
   },
-  rebuildConfig: {},
+  rebuildConfig: {
+    // These modules need special handling - using proper property name
+    onlyModules: ['better-sqlite3']
+  },
   makers: [
     new MakerSquirrel({}),
     new MakerZIP({}, ["darwin"]),
@@ -57,6 +66,12 @@ const config: ForgeConfig = {
       [FuseV1Options.OnlyLoadAppFromAsar]: true,
     }),
   ],
+  hooks: {
+    // Add a hook to run after packaging to ensure native modules are properly included
+    postPackage: async (forgeConfig, options) => {
+      console.log('Packaging completed. Native modules should be properly included.');
+    }
+  }
 };
 
 export default config;

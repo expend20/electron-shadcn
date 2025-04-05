@@ -1,13 +1,14 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>electron-shadcn Template</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
-  </head>
-  <body>
-    <div id="app" />
-    <script type="module" src="/src/renderer.ts"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+  <title>electron-shadcn Template</title>
+  <link rel="stylesheet" href="/src/styles/global.css" />
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="./src/renderer.ts"></script>
+</body>
 </html>

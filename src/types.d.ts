@@ -18,7 +18,18 @@ interface ElectronWindow {
   close: () => Promise<void>;
 }
 
+// Todo database API types
+interface TodoDB {
+  getAll: () => Promise<import('./types/todo').Todo[]>;
+  add: (todo: Omit<import('./types/todo').Todo, 'order'>) => Promise<void>;
+  toggle: (id: string, completed: boolean) => Promise<void>;
+  edit: (id: string, text: string) => Promise<void>;
+  delete: (id: string) => Promise<void>;
+  updateOrder: (todosOrder: Array<{ id: string; order: number }>) => Promise<void>;
+}
+
 declare interface Window {
   themeMode: ThemeModeContext;
   electronWindow: ElectronWindow;
+  todoDB: TodoDB;
 }

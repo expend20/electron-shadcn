@@ -4,8 +4,6 @@ import Footer from "@/components/template/Footer";
 import { TodoInput } from "@/components/todos/TodoInput";
 import { TodoList } from "@/components/todos/TodoList";
 import { TodoProvider } from "@/context/TodoContext";
-import ToggleTheme from "@/components/ToggleTheme";
-import LangToggle from "@/components/LangToggle";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -26,11 +24,6 @@ export default function HomePage() {
             <TodoList />
           </div>
         </TodoProvider>
-        
-        <div className="mt-8 flex justify-center gap-4">
-          <LangToggle />
-          <ToggleTheme />
-        </div>
       </div>
       <Footer />
     </div>

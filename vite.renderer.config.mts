@@ -12,10 +12,26 @@ export default defineConfig({
       },
     }),
   ],
+  base: './', // Ensure assets are loaded with relative paths
   resolve: {
     preserveSymlinks: true,
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  build: {
+    // Ensure proper sourcemap generation
+    sourcemap: true,
+    // Force correct asset paths
+    assetsDir: 'assets',
+    // Optimize for Electron
+    rollupOptions: {
+      output: {
+        format: 'cjs', // Use CommonJS format for better compatibility with Electron
+        entryFileNames: '[name].js',
+        chunkFileNames: '[name].js',
+        assetFileNames: 'assets/[name].[ext]'
+      }
+    }
   },
 });
